@@ -7,8 +7,15 @@ class Series(){
     var number = mutableStateOf("0")
     var memoria = mutableStateOf("0")
     var memoriaoper = mutableStateOf("0")
+    var memoriaoperbool = mutableStateOf(false)
+
 
     fun append(char : String){
+        if(memoriaoperbool.value) {
+            number.value = ""
+            memoriaoperbool.value = false
+        }
+
         if (char != ".") {
             if (number.value == "0")
                 number.value = char
@@ -27,7 +34,7 @@ class Series(){
     fun oper(char : String){
         memoria.value = number.value
         memoriaoper.value = char
-        number.value = "0"
+        memoriaoperbool.value = true
     }
 
     fun result(){
@@ -58,5 +65,6 @@ class Series(){
         number.value = "0"
         memoria.value = "0"
         memoriaoper.value = "0"
+        memoriaoperbool.value = false
     }
 }
