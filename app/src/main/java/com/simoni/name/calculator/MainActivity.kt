@@ -26,8 +26,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             CalculatorTheme {
                 // qui le variabili
-                var series by remember { mutableStateOf(Series()) }
-
+                //var series by remember { mutableStateOf(Series()) }
+                var series: Series = Series()
 
                 // A surface container using the 'background' color from the theme
                 Surface(
