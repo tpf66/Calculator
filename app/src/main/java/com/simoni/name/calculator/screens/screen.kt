@@ -4,6 +4,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -58,7 +59,7 @@ fun Secondscreen(
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(70.dp)
+                .fillMaxHeight(0.3f)
                 .padding(horizontal = 15.dp),
             userScrollEnabled = true,
             state = state

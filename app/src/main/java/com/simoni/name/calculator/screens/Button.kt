@@ -12,6 +12,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.res.vectorResource
@@ -20,15 +21,24 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.simoni.name.calculator.R
+import com.simoni.name.calculator.model.Series
 import com.simoni.name.calculator.ui.theme.CalculatorTheme
 import com.simoni.name.calculator.ui.theme.second
+import com.simoni.name.calculator.ui.theme.second_premuto
 import com.simoni.name.calculator.ui.theme.third
 
 @Composable
 fun button(
     char: String,
+    series: Series,
     onClick: () -> Unit = {}
 ) {
+    var color = second
+
+    when {
+        series.memoriaoper.value == char -> color = second_premuto
+    }
+
     IconButton(
         onClick = onClick,
         modifier = Modifier
@@ -39,7 +49,7 @@ fun button(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(7.dp)
-                .background(second, shape = MaterialTheme.shapes.small),
+                .background(color, shape = MaterialTheme.shapes.small),
             imageVector = when {
                 char == "1" -> ImageVector.vectorResource(id = R.drawable.one)
                 char == "2" -> ImageVector.vectorResource(id = R.drawable.two)

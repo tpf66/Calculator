@@ -27,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.simoni.name.calculator.model.Series
 import com.simoni.name.calculator.ui.theme.first
+import com.simoni.name.calculator.ui.theme.second
 import com.simoni.name.calculator.ui.theme.third
 import kotlinx.coroutines.launch
 
@@ -49,7 +50,6 @@ fun MainView(series: Series) {
 fun portrait(series: Series) {
     val state = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
-
 
     Column(
         modifier = Modifier
@@ -78,11 +78,11 @@ fun portrait(series: Series) {
 
                 Spacer(modifier = Modifier.size(100.dp))
                 Spacer(modifier = Modifier.size(100.dp))
-                button(char = "d") {
+                button(char = "d", series) {
                     series.delete()
                     coroutineScope.launch { state.animateScrollToItem(series.history.size) }
                 }
-                button(char = "b") {
+                button(char = "b", series) {
                     series.back()
                     coroutineScope.launch { state.animateScrollToItem(series.history.size) }
                 }
@@ -91,70 +91,72 @@ fun portrait(series: Series) {
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                button("1") {
+                button("1", series) {
                     series.append("1")
                     coroutineScope.launch { state.animateScrollToItem(series.history.size) }
                 }
-                button("2") {
+                button("2", series) {
                     series.append("2")
                     coroutineScope.launch { state.animateScrollToItem(series.history.size) }
                 }
-                button("3") {
+                button("3", series) {
                     series.append("3")
                     coroutineScope.launch { state.animateScrollToItem(series.history.size) }
                 }
-                button("/") { series.oper("/") }
+                button("/", series) {
+                    series.oper("/")
+                }
             }
             Row(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                button("4") { series.append("4")
+                button("4", series) { series.append("4")
                     coroutineScope.launch { state.animateScrollToItem(series.history.size) }
                 }
-                button("5") { series.append("5")
+                button("5", series) { series.append("5")
                     coroutineScope.launch { state.animateScrollToItem(series.history.size) }
                 }
-                button("6") { series.append("6")
+                button("6", series) { series.append("6")
                     coroutineScope.launch { state.animateScrollToItem(series.history.size) }
                 }
-                button("x") { series.oper("x") }
+                button("x", series) { series.oper("x") }
             }
             Row(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                button("7") {
+                button("7", series) {
                     series.append("7")
                     coroutineScope.launch { state.animateScrollToItem(series.history.size) }
                 }
-                button("8") {
+                button("8", series) {
                     series.append("8")
                     coroutineScope.launch { state.animateScrollToItem(series.history.size) }
                 }
-                button("9") {
+                button("9", series) {
                     series.append("9")
                     coroutineScope.launch { state.animateScrollToItem(series.history.size) }
                 }
-                button("-") { series.oper("-") }
+                button("-", series) { series.oper("-") }
             }
             Row(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                button("0") {
+                button("0", series) {
                     series.append("0")
                     coroutineScope.launch { state.animateScrollToItem(series.history.size) }
                 }
-                button(".") {
+                button(".", series) {
                     series.append(".")
                     coroutineScope.launch { state.animateScrollToItem(series.history.size) }
                 }
-                button("=") {
+                button("=", series) {
                     series.result()
                     coroutineScope.launch { state.animateScrollToItem(series.history.size) }
                 }
-                button("+") { series.oper("+") }
+                button("+", series) { series.oper("+") }
             }
         }
     }
@@ -184,18 +186,18 @@ fun landscape(series: Series) {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                button("1") { series.append("1") }
-                button("2") { series.append("2") }
-                button("3") { series.append("3") }
+                button("1", series) { series.append("1") }
+                button("2", series) { series.append("2") }
+                button("3", series) { series.append("3") }
             }
             Row(
                 horizontalArrangement = Arrangement.SpaceAround,
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                button("4") { series.append("4") }
-                button("5") { series.append("5") }
-                button("6") { series.append("6") }
+                button("4", series) { series.append("4") }
+                button("5", series) { series.append("5") }
+                button("6", series) { series.append("6") }
             }
 
             Row(
@@ -203,9 +205,9 @@ fun landscape(series: Series) {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                button("7") { series.append("7") }
-                button("8") { series.append("8") }
-                button("9") { series.append("9") }
+                button("7", series) { series.append("7") }
+                button("8", series) { series.append("8") }
+                button("9", series) { series.append("9") }
             }
         }
 
@@ -226,18 +228,18 @@ fun landscape(series: Series) {
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    button("+") { series.oper("+") }
-                    button("-") { series.oper("-") }
-                    button("d") { series.delete() }
+                    button("+", series) { series.oper("+") }
+                    button("-", series) { series.oper("-") }
+                    button("d", series) { series.delete() }
                 }
                 Row(
                     horizontalArrangement = Arrangement.SpaceAround,
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    button("0") { series.append("0") }
-                    button(".") { series.append(".") }
-                    button("=") { series.result() }
+                    button("0", series) { series.append("0") }
+                    button(".", series) { series.append(".") }
+                    button("=", series) { series.result() }
                 }
             }
         }

@@ -14,10 +14,14 @@ import androidx.lifecycle.*
 class Series(){
     var number = mutableStateOf("0")
     var memoria = mutableStateOf("0")
-    var memoriaoper = mutableStateOf("0")
+    var memoriaoper = mutableStateOf("-1")
     var memoriaoperbool = mutableStateOf(false)
     var history = mutableStateListOf<String>()
     var historytmp = mutableStateOf("")
+    var colorpiu = mutableStateOf(false)
+    var colormeno = mutableStateOf(false)
+    var colorper = mutableStateOf(false)
+    var colordiviso = mutableStateOf(false)
 
 
     fun append(char : String) {
@@ -51,6 +55,13 @@ class Series(){
         memoria.value = number.value
         memoriaoper.value = char
         memoriaoperbool.value = true
+
+        when{
+            char == "+" -> colorpiu.value = true
+            char == "-" -> colormeno.value = true
+            char == "x" -> colorper.value = true
+            char == "/" -> colordiviso.value = true
+        }
     }
 
     fun result(){
@@ -82,7 +93,7 @@ class Series(){
     fun delete()  {
         number.value = "0"
         memoria.value = "0"
-        memoriaoper.value = "0"
+        memoriaoper.value = "-1"
         memoriaoperbool.value = false
     }
 }
