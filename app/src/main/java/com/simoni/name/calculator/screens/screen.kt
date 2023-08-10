@@ -59,7 +59,7 @@ fun Secondscreen(
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.3f)
+                .fillMaxHeight(0.2f)
                 .padding(horizontal = 15.dp),
             userScrollEnabled = true,
             state = state

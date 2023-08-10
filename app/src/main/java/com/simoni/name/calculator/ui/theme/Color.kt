@@ -12,5 +12,5 @@ val Pink40 = Color(0xFF7D5260)
 
 val first = Color(0xFFF4C095)
 val second = Color(0xFF1d7874)
-val second_premuto = Color(0xFF1d6874)
+val second_premuto = Color(0xFF17615D)
 val third = Color(0xFF071e22)
